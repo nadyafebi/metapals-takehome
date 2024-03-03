@@ -2,6 +2,11 @@ import "./style.css";
 import { Game, Entity } from "./engine";
 import { TextComponent } from "./components/TextComponent";
 import { TextRendererSystem } from "./system/TextRendererSystem";
+import { HoleComponent } from "./components/HoleComponent";
+import { MoleSpawnerSystem } from "./system/MoleSpawnerSystem";
+import { ImageRendererSystem } from "./system/ImageRendererSystem";
+import { InputSystem } from "./system/InputSystem";
+import { ClickableComponent } from "./components/ClickableComponent";
 
 /*
   Setup game
@@ -15,7 +20,7 @@ const game = new Game(gameContainer);
 game.setup(() => {
   /*
       Create entities
-    */
+  */
   game.addEntity(
     new Entity("h1")
       .style("title")
@@ -26,7 +31,10 @@ game.setup(() => {
   game.addEntity(holeContainer);
 
   for (let i = 0; i < 3; i++) {
-    const hole = new Entity("div").style("hole mx-2");
+    const hole = new Entity("div")
+      .style("hole mx-2")
+      .addComponent(new HoleComponent())
+      .addComponent(new ClickableComponent());
     game.addEntity(hole, holeContainer);
   }
 
@@ -50,13 +58,17 @@ game.setup(() => {
 
   const startButton = new Entity("button")
     .style("button")
-    .addComponent(new TextComponent("Start"));
+    .addComponent(new TextComponent("Start"))
+    .addComponent(new ClickableComponent());
   game.addEntity(startButton, startButtonContainer);
 
   /*
       Create systems
-    */
+  */
+  game.addSystem(new InputSystem());
+  game.addSystem(new MoleSpawnerSystem(game));
   game.addSystem(new TextRendererSystem());
+  game.addSystem(new ImageRendererSystem());
 });
 
 game.start();
