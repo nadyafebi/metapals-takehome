@@ -1,10 +1,15 @@
 import { Component, ComponentClass } from "./Component";
 
 /**
+ * An entity ID.
+ */
+export type EntityId = string;
+
+/**
  * Represents an entity in the game.
  */
 export class Entity {
-  id: string;
+  id: EntityId;
   element: HTMLElement;
   private components: Record<string, Component> = {};
 

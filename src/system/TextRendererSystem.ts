@@ -1,8 +1,8 @@
-import { Entity, System } from "../engine";
+import { Entity, EntityId, System } from "../engine";
 import { TextComponent } from "../components/TextComponent";
 
 export class TextRendererSystem extends System {
-  renderCache: Record<string, string> = {};
+  renderCache: Record<EntityId, string> = {};
 
   update(entities: Entity[]): void {
     for (const entity of entities) {
