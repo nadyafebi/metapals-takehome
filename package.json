@@ -1,0 +1,23 @@
+{
+  "name": "metapals-takehome",
+  "version": "1.0.0",
+  "description": "MetaPals take home assignment.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/nadyafebi/metapals-takehome.git"
+  },
+  "author": "Nadya Djojosantoso <hello@nadyafebi.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nadyafebi/metapals-takehome/issues"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "vite": "^5.1.4"
+  }
+}
