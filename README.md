@@ -2,6 +2,8 @@
 
 [Requirements](https://metapals.github.io/frontend-interview-test-lite/)
 
+[Demo](https://nadyafebi.github.io/metapals-takehome/)
+
 ## Getting Started
 
 ```bash
