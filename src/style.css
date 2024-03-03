@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#game {
+  max-width: 32rem;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 0.67em 0;
+}
+
+.hole {
+  width: 64px;
+  height: 64px;
+  background-color: #000;
+  border-radius: 100%;
+  border-color: gray;
+  border-style: solid;
+  border-width: 4px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.button {
+  padding: 10px 16px;
+  background-color: #ea4c89;
+  border-radius: 8px;
+  transition: color 0.1s;
+  outline: none;
+  border-style: none;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-block;
+}
