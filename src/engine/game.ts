@@ -7,7 +7,7 @@ export class Game {
   private entities: Entity[];
   private systems: System[];
   private root: HTMLElement;
-  private initializeFn: Function = () => {};
+  private setupFn: Function = () => {};
   private isGameRunning = false;
   private animationRequestId: number = 0;
 
@@ -45,18 +45,15 @@ export class Game {
   }
 
   /**
-   * Set an initialize function to be called each time the game starts.
-   * @param initializeFn A function to initialize the game.
-   * @returns Instance of game.
+   * Set a setup function to be called each time the game starts.
+   * @param setupFn A function to setup the game.
    */
-  initialize(initializeFn: Function) {
-    this.initializeFn = initializeFn;
-    return this;
+  setup(setupFn: Function) {
+    this.setupFn = setupFn;
   }
 
   /**
    * Starts the game loop.
-   * @returns Instance of game.
    */
   start() {
     // If the game is still running, stop it.
@@ -68,7 +65,7 @@ export class Game {
     this.root.replaceChildren();
 
     // Run the initialize function.
-    this.initializeFn();
+    this.setupFn();
 
     // Create game loop.
     const gameLoop = () => {
