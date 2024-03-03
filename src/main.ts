@@ -7,6 +7,8 @@ import { MoleSpawnerSystem } from "./system/MoleSpawnerSystem";
 import { ImageRendererSystem } from "./system/ImageRendererSystem";
 import { InputSystem } from "./system/InputSystem";
 import { ClickableComponent } from "./components/ClickableComponent";
+import { GameStateComponent } from "./components/GameStateComponent";
+import { GameStateSystem } from "./system/GameStateSystem";
 
 /*
   Setup game
@@ -62,11 +64,14 @@ game.setup(() => {
     .addComponent(new ClickableComponent());
   game.addEntity(startButton, startButtonContainer);
 
+  const singleton = new Entity("div").addComponent(new GameStateComponent());
+
   /*
       Create systems
   */
   game.addSystem(new InputSystem());
-  game.addSystem(new MoleSpawnerSystem(game));
+  game.addSystem(new GameStateSystem(startButton, singleton));
+  game.addSystem(new MoleSpawnerSystem(game, singleton));
   game.addSystem(new TextRendererSystem());
   game.addSystem(new ImageRendererSystem());
 });

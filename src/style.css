@@ -37,3 +37,12 @@
   cursor: pointer;
   display: inline-block;
 }
+
+.button:hover,
+.button:focus {
+  background-color: #f082ac;
+}
+
+.button:disabled {
+  background-color: #9f9f9f;
+}
