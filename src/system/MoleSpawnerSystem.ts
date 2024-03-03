@@ -25,6 +25,7 @@ export class MoleSpawnerSystem extends System {
   update(entities: Entity[]): void {
     if (!this.started && this.gameState.started) {
       this.started = true;
+      this.shouldSpawn = true;
     }
 
     if (this.started) {

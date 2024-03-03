@@ -9,6 +9,7 @@ import { InputSystem } from "./system/InputSystem";
 import { ClickableComponent } from "./components/ClickableComponent";
 import { GameStateComponent } from "./components/GameStateComponent";
 import { GameStateSystem } from "./system/GameStateSystem";
+import { StatusSystem } from "./system/StatusSystem";
 
 /*
   Setup game
@@ -41,7 +42,7 @@ game.setup(() => {
   }
 
   const winText = new Entity("div")
-    .style("text-green text-center py-4")
+    .style("text-green-500 text-center py-4")
     .addComponent(new TextComponent());
   game.addEntity(winText);
 
@@ -72,6 +73,9 @@ game.setup(() => {
   game.addSystem(new InputSystem());
   game.addSystem(new GameStateSystem(startButton, singleton));
   game.addSystem(new MoleSpawnerSystem(game, singleton));
+  game.addSystem(
+    new StatusSystem(singleton, winText, clickCounter, timeCounter)
+  );
   game.addSystem(new TextRendererSystem());
   game.addSystem(new ImageRendererSystem());
 });
